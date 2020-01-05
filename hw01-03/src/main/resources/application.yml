@@ -1,0 +1,12 @@
+hw:
+  lang: ru
+  guestName: john
+  guestSurnmae: doe
+  filePath: 'classpath:csv/'
+  fileDelimiter: ;
+  questionsFilePrefix: questions/questions_
+  answersFilePrefix: answers/answers_
+
+spring:
+  messages:
+    basename: hw
