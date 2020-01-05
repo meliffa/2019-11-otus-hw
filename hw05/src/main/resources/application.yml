@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://dfddcdb:5432/ispodtest
+    username: ispodtest
+    password: 12345678
+    hikari:
+      connection-test-query: select 1
+    initialization-mode: always
+    schema: db/structure.sql
+    data: db/data.sql
