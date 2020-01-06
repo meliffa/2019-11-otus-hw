@@ -35,7 +35,7 @@ public class BookDBImpl implements BookDBProvider {
     }
 
     @Override
-    public Book getBookByName(String bookName) {
+    public List<Book> getBooksByName(String bookName) {
         String query="select b.bookid, b.bookname, b.authorid, b.genreid, a.authorname, g.genrename " +
                 "from hw_book b " +
                 "left join hw_author a on b.authorid = a.authorid " +
@@ -43,8 +43,7 @@ public class BookDBImpl implements BookDBProvider {
                 "where upper(b.bookname) = :bookName";
         Map<String, Object> queryParams = new HashMap<>();
         queryParams.put("bookName", bookName.toUpperCase());
-        List<Book> books = template.query(query, queryParams, new BookRowMapper());
-        if (books.size() > 0) return books.get(0); else return null;
+        return template.query(query, queryParams, new BookRowMapper());
     }
 
     @Override
@@ -55,7 +54,7 @@ public class BookDBImpl implements BookDBProvider {
 
     @Override
     public void deleteBookById(Integer bookId) {
-        String query="delete from hw_book where bookId = :bookId)";
+        String query="delete from hw_book where bookid = :bookId";
         Map<String, Object> queryParams = new HashMap<>();
         queryParams.put("bookId", bookId);
         template.execute(query, queryParams, (PreparedStatementCallback) ps -> ps.executeUpdate());

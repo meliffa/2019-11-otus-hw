@@ -1,7 +1,9 @@
 package ru.otus.hw.utils.db;
 
 import org.springframework.jdbc.core.RowMapper;
+import ru.otus.hw.entity.Author;
 import ru.otus.hw.entity.Book;
+import ru.otus.hw.entity.Genre;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,10 +17,8 @@ public class BookRowMapper implements RowMapper<Book> {
         Book book = new Book();
         book.setBookId(rs.getInt("bookid"));
         book.setBookName(rs.getString("bookname"));
-        book.setAuthorId(rs.getInt("authorid"));
-        book.setAuthor(rs.getString("authorname"));
-        book.setGenreId(rs.getInt("genreid"));
-        book.setGenre(rs.getString("genrename"));
+        book.setAuthor(new Author(rs.getInt("authorid"), rs.getString("authorname")));
+        book.setGenre(new Genre(rs.getInt("genreid"), rs.getString("genrename")));
         return book;
     }
 }

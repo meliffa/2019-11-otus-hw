@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface BookDBProvider {
     Book getBookById(Integer bookId);
-    Book getBookByName(String bookName);
+    List<Book> getBooksByName(String bookName);
     void insertBook(Book book);
     void deleteBookById(Integer bookId);
     List<Book> getAllBooks();

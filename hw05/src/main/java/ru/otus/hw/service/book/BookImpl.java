@@ -26,8 +26,8 @@ public class BookImpl implements BookProvider {
     }
 
     @Override
-    public Book getBookByName(String bookName) {
-        return dbBookProvider.getBookByName(bookName);
+    public List<Book> getBooksByName(String bookName) {
+        return dbBookProvider.getBooksByName(bookName);
     }
 
     @Override

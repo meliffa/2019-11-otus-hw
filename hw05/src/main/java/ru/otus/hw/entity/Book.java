@@ -16,10 +16,8 @@ import java.util.Map;
 public class Book {
     private Integer bookId;
     private String bookName;
-    private Integer authorId;
-    private Integer genreId;
-    private String author;
-    private String genre;
+    private Author author;
+    private Genre genre;
 
     public Book(String bookName) {
         this.bookName = bookName;
@@ -31,8 +29,8 @@ public class Book {
             bookMap.put("bookId", bookId);
         }
         bookMap.put("bookName", bookName);
-        bookMap.put("authorId", authorId);
-        bookMap.put("genreId", genreId);
+        bookMap.put("authorId", author.getAuthorId());
+        bookMap.put("genreId", genre.getGenreId());
         return bookMap;
     }
 }

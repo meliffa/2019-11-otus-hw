@@ -12,7 +12,7 @@ import java.util.List;
 public interface BookProvider {
     void createBook(Book book);
     Book getBookById(Integer bookId);
-    Book getBookByName(String bookName);
+    List<Book> getBooksByName(String bookName);
     List<Book> listBooks();
     void deleteBookById(Integer bookId);
     void updateBook(Integer bookId, Author author, Genre genre, String bookName);
