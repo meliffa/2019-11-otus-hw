@@ -1,7 +1,6 @@
 package ru.otus.hw.utils.io;
 
 import org.springframework.stereotype.Service;
-
 import java.util.Scanner;
 
 /**
