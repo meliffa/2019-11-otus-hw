@@ -24,15 +24,6 @@ public class GenreDTO {
         this.genreName = genreName;
     }
 
-    public Map convertToMap() {
-        Map genreMap = new HashMap<>();
-        if (genreId != null) {
-            genreMap.put("genreId", genreId);
-        }
-        genreMap.put("genreName", genreName);
-        return genreMap;
-    }
-
     public Genre buildJpaEntity() {
         return Genre.builder()
                 .genreId(genreId)

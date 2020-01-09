@@ -29,7 +29,7 @@ public class AuthorRepoImpl implements AuthorRepository {
     public Author getByName(String authorName) {
         try {
             TypedQuery<Author> query = em.createQuery(
-                    "select a from Author a where a.authorName = :authorName",
+                    "select a from Author a where upper(a.authorName) = :authorName",
                     Author.class
             );
             query.setParameter("authorName", authorName);

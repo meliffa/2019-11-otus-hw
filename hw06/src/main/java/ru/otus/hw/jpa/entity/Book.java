@@ -1,10 +1,6 @@
 package ru.otus.hw.jpa.entity;
 
 import lombok.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import ru.otus.hw.dto.BookDTO;
 
 import javax.persistence.*;
@@ -13,7 +9,9 @@ import javax.persistence.*;
  * Created by Inna Spodarik on 06.01.2020.
  */
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(exclude={"author", "genre"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

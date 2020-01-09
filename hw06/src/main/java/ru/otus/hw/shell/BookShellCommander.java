@@ -44,4 +44,7 @@ public class BookShellCommander {
     public void getBookByName(String bookName) {
         provider.getByName(bookName);
     }
+
+    @ShellMethod(key = {"bga", "bgba"}, value = "Get books by author")
+    public void getBooksByAuthor(String authorName) { provider.getByAuthorName(authorName); }
 }

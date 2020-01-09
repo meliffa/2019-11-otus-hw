@@ -10,4 +10,5 @@ public interface BookShellUtilsProvider {
     void getByName(String name);
     void getById(Integer id);
     void browse();
+    void getByAuthorName(String authorName);
 }

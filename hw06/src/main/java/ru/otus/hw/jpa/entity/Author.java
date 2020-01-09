@@ -1,11 +1,10 @@
 package ru.otus.hw.jpa.entity;
 
 import lombok.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import ru.otus.hw.dto.AuthorDTO;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Inna Spodarik on 06.01.2020.
@@ -24,6 +23,10 @@ public class Author {
 
     @Column(name = "AUTHORNAME", length = 1024)
     private String authorName;
+
+    @OneToMany(targetEntity = Book.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="AUTHORID", insertable = false, updatable = false)
+    private Set<Book> books;
 
     public AuthorDTO buildDTO() {
         return AuthorDTO.builder()

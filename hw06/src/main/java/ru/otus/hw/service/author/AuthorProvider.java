@@ -15,4 +15,5 @@ public interface AuthorProvider {
     void update(AuthorDTO author);
     void deleteById(Integer id);
     List<AuthorDTO> getAll();
+    AuthorDTO getByNameWithBooks(String name);
 }

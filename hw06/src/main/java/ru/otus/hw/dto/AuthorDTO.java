@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.otus.hw.jpa.entity.Author;
+import java.util.Set;
 
 /**
  * Created by Inna Spodarik on 05.01.2020.
@@ -16,8 +17,14 @@ import ru.otus.hw.jpa.entity.Author;
 public class AuthorDTO {
     private Integer authorId;
     private String authorName;
+    private Set<BookDTO> books;
 
     public AuthorDTO(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public AuthorDTO(Integer authorId, String authorName) {
+        this.authorId = authorId;
         this.authorName = authorName;
     }
 

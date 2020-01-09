@@ -106,6 +106,22 @@ public class BookShellUtilsImpl implements BookShellUtilsProvider {
         }
     }
 
+    @Override
+    public void getByAuthorName(String authorName) {
+        AuthorDTO author = authorProvider.getByNameWithBooks(authorName);
+        if (author == null) {
+            ioProvider.print(messageProvider.getFormattedMessage("HW.AuthorNotFound", authorName));
+            return;
+        }
+        if (author.getBooks() != null && author.getBooks().size() > 0) {
+            ioProvider.print(messageProvider.getMessage("HW.Books"));
+            author.getBooks().forEach(b -> ioProvider.print(b.toString()));
+            ioProvider.print("==================================");
+        } else {
+            ioProvider.print(messageProvider.getFormattedMessage("HW.BooksNotFoundByAuthorName", authorName));
+        }
+    }
+
     private BookDTO getBookForCreate() {
         ioProvider.print(messageProvider.getMessage("HW.EnterBookName"));
         boolean entered = false;

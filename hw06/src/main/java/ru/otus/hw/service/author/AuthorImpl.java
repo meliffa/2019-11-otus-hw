@@ -1,6 +1,7 @@
 package ru.otus.hw.service.author;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.hw.dto.AuthorDTO;
 import ru.otus.hw.jpa.entity.Author;
 import ru.otus.hw.jpa.repository.author.AuthorRepository;
@@ -32,8 +33,24 @@ public class AuthorImpl implements AuthorProvider {
 
     @Override
     public AuthorDTO getByName(String name) {
-        Author author = authorRepository.getByName(name);
+        Author author = authorRepository.getByName(name != null ? name.toUpperCase() : null);
         return author != null ? author.buildDTO() : null;
+    }
+
+    @Override
+    @Transactional
+    public AuthorDTO getByNameWithBooks(String name) {
+        Author author = authorRepository.getByName(name != null ? name.toUpperCase() : null);
+        AuthorDTO authorDTO = null;
+        if (author != null) {
+            authorDTO = author.buildDTO();
+            authorDTO.setBooks(
+                    author.getBooks().stream()
+                            .map(b -> b.buildDTO())
+                            .collect(Collectors.toSet())
+            );
+        }
+        return authorDTO;
     }
 
     @Override
