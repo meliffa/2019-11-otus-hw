@@ -33,7 +33,7 @@ public class AuthorImpl implements AuthorProvider {
 
     @Override
     public AuthorDTO getByName(String name) {
-        Author author = authorRepository.getByName(name != null ? name.toUpperCase() : null);
+        Author author = authorRepository.getByName(name);
         return author != null ? author.buildDTO() : null;
     }
 

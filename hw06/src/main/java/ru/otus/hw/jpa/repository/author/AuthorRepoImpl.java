@@ -32,7 +32,7 @@ public class AuthorRepoImpl implements AuthorRepository {
                     "select a from Author a where upper(a.authorName) = :authorName",
                     Author.class
             );
-            query.setParameter("authorName", authorName);
+            query.setParameter("authorName", authorName != null ? authorName.toUpperCase() : null);
             return query.getSingleResult();
         } catch (NoResultException e) {
             return null;
