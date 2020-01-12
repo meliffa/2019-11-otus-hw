@@ -3,7 +3,6 @@ package ru.otus.hw.db;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.otus.hw.db.book.BookDBProvider;
 import ru.otus.hw.entity.Author;
