@@ -10,7 +10,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>hw05</artifactId>
+    <artifactId>hw07</artifactId>
 
     <dependencies>
         <dependency>
