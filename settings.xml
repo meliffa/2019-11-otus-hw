@@ -1,0 +1,65 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<localRepository>C:\Users\User\.m2\springotusrepository</localRepository>
+	<profiles>    
+		<profile>    
+		    <id>central-release</id>    
+
+		    <repositories>    
+		        <repository>
+				  <id>repo1</id>
+				  <url>https://repo1.maven.org/maven2</url>
+				  <releases>
+					<enabled>true</enabled>
+				  </releases>
+				</repository> 
+				<repository>
+					<id>spring-central</id>
+					<url>https://repo.spring.io/libs-release</url>
+				</repository>
+				<repository>
+					<id>spring-releases</id>
+					<url>https://repo.spring.io/libs-release</url>
+				</repository>
+				<repository>
+					<id>spring-milestones</id>
+					<name>Spring Milestones</name>
+					<url>https://repo.spring.io/libs-milestone</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>UK</id>
+					<name>UK Central</name>
+					<url>http://uk.maven.org/maven2</url>
+				</repository>				
+		    </repositories>  			
+		    
+		<pluginRepositories>    
+		        <pluginRepository>
+				  <id>repo1</id>
+				  <url>https://repo1.maven.org/maven2</url>
+				  <releases>
+					<enabled>true</enabled>
+				  </releases>
+				</pluginRepository>
+				<pluginRepository>
+				  <id>sprint-centr</id>
+				  <url>https://repo.spring.io/libs-release</url>
+				  <releases>
+					<enabled>true</enabled>
+				  </releases>
+				</pluginRepository>				
+		    </pluginRepositories>    
+		</profile>    
+   	 </profiles>  
+
+	<activeProfiles>
+	    <activeProfile>central-release</activeProfile>
+	 </activeProfiles>
+
+</settings>
