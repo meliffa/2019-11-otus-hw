@@ -8,10 +8,7 @@ import ru.otus.hw.db.entity.Author;
 import ru.otus.hw.db.entity.Book;
 import ru.otus.hw.db.entity.Comment;
 import ru.otus.hw.db.entity.Genre;
-
 import java.util.Arrays;
-import java.util.List;
-
 
 /**
  * Created by Inna Spodarik on 24.02.2020.

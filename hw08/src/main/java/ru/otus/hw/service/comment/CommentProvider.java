@@ -1,7 +1,6 @@
 package ru.otus.hw.service.comment;
 
 import ru.otus.hw.dto.CommentDTO;
-
 import java.util.List;
 
 /**

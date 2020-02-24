@@ -5,7 +5,6 @@ import ru.otus.hw.db.entity.Genre;
 import ru.otus.hw.db.repository.GenreRepository;
 import ru.otus.hw.dto.GenreDTO;
 
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;

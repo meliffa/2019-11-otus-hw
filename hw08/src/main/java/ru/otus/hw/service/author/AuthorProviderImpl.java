@@ -7,7 +7,6 @@ import ru.otus.hw.db.repository.AuthorRepository;
 import ru.otus.hw.db.repository.BookRepository;
 import ru.otus.hw.dto.AuthorDTO;
 
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
