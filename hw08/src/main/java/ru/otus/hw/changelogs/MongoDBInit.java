@@ -28,12 +28,6 @@ public class MongoDBInit {
     private Genre genre3;
     private Genre genre4;
 
-    private Book book1;
-    private Book book2;
-    private Book book3;
-    private Book book4;
-    private Book book5;
-
     private Comment comment1;
     private Comment comment2;
     private Comment comment3;
@@ -72,10 +66,10 @@ public class MongoDBInit {
 
     @ChangeSet(order = "5", id = "insertBooks", author = "ispodarik", runAlways = true)
     public void insertBooks(MongoTemplate template){
-        book1 = template.save(new Book("95006896-12c4-4531-b11c-8ff153e44d70", "Fahrenheit 451", author1, genre1, Arrays.asList(comment1)));
-        book2 = template.save(new Book("Arc de Triomphe", author2, genre2, Arrays.asList(comment2)));
-        book3 = template.save(new Book("Brave New World", author3, genre3, Arrays.asList(comment3)));
-        book4 = template.save(new Book("Hopscotch", author4, genre4, Arrays.asList(comment4)));
-        book5 = template.save(new Book("Life on loan", author2, genre4, Arrays.asList(comment5)));
+        template.save(new Book("95006896-12c4-4531-b11c-8ff153e44d70", "Fahrenheit 451", author1, genre1, Arrays.asList(comment1)));
+        template.save(new Book("Arc de Triomphe", author2, genre2, Arrays.asList(comment2)));
+        template.save(new Book("Brave New World", author3, genre3, Arrays.asList(comment3)));
+        template.save(new Book("Hopscotch", author4, genre4, Arrays.asList(comment4)));
+        template.save(new Book("Life on loan", author2, genre4, Arrays.asList(comment5)));
     }
 }
