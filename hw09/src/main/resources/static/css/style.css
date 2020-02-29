@@ -1,0 +1,29 @@
+body {
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 25pt;
+  padding: 5px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  font-size: 25pt;
+  padding: 5px;
+}
+
+label {
+  display: inline-block;
+  font-size: 25pt;
+  width: 400px;
+}
+
+.spacer {
+  height: 10px;
+}
+
+.libForm, .textfield, .link {
+  font-size: 25pt;
+}

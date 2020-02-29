@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Книги</title>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+</head>
+
+<body>
+<div>
+    <div>
+        <h1>Книги:</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Идентификатор</th>
+                <th>Автор</th>
+                <th>Название</th>
+                <th>Жанр</th>
+                <th>Изменение</th>
+                <th>Удаление</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.bookId}">1</td>
+                <td th:text="${book.author.authorName}">Рэй Брэдбери</td>
+                <td th:text="${book.bookName}">451 градус по фаренгейту</td>
+                <td th:text="${book.genre.genreName}">Научная фантастика</td>
+                <td>
+                    <a th:href="@{/book/edit/__${book.bookId}__}" th:text="Изменить"/>
+                </td>
+                <td>
+                    <a th:href="@{/book/delete/__${book.bookId}__}" th:text="Удалить"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="spacer"></div>
+        <div class="link">
+            <a href="/lib/book/add">Добавить</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Книга</title>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+</head>
+
+<body>
+
+<div class="libForm">
+    <h1 class="h1" th:if="${author.authorId}">Редактирование автора</h1>
+    <h1 class="h1" th:unless="${author.authorId}">Добавление автора</h1>
+
+    <form action="#" method="post" th:action="@{/author/save}" th:object="${author}">
+
+        <input th:field="*{authorId}" type="hidden">
+        <div>
+            <label for="authorName" style="width:600px;font-size:25pt">ФИО автора</label>
+            <input class="textfield" id="authorName" th:field="*{authorName}" type="text" style="font-size:25pt;width:600px">
+        </div>
+        <div class="spacer" style="height:10px;"></div>
+        <button type="submit" style="font-size:25pt;width:250px">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>
