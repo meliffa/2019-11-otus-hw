@@ -27,3 +27,7 @@ label {
 .libForm, .textfield, .link {
   font-size: 25pt;
 }
+
+.smallLink {
+  font-size: 15pt;
+}
