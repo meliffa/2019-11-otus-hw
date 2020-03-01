@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Книги</title>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+    <script src="webjars/vue/vue.min.js"></script>
+    <script src="webjars/axios/dist/axios.min.js"></script>
+    <script src="webjars/jquery/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.4.2"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<div id="books">
+    <h1>Книги</h1>
+    <table class="books" id="books-table">
+        <thead>
+        <tr>
+            <th>Идентификатор</th>
+            <th>Автор</th>
+            <th>Название</th>
+            <th>Жанр</th>
+            <th>Удаление</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="book in books">
+            <td>{{ book.bookId }}</td>
+            <td>{{ book.author.authorName }}</td>
+            <td>{{ book.bookName }}</td>
+            <td>{{ book.genre.genreName }}</td>
+            <td>
+                <button class="button" v-on:click="deleteBook(book)">Удалить</button>
+            </td>
+        </tbody>
+    </table>
+
+    <div class="spacer"></div>
+    <form id="edit-form">
+        <h1>Добавить книгу:</h1>
+
+        <div class="row">
+            <label>Автор</label>
+            <select v-model="selectedAuthor" class="row" width="300px">
+                <option v-for="author in authors" v-bind:value="{ authorId: author.authorId, authorName: author.authorName }">
+                    {{ author.authorName }}
+                </option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="bookName">Название</label>
+            <input id="bookName" class="row" name="bookName" type="text" v-model="bookName"/>
+        </div>
+
+        <div class="row">
+            <label>Жанр</label>
+            <select v-model="selectedGenre" class="row">
+                <option v-for="genre in genres" v-bind:value="{ genreId: genre.genreId, genreName: genre.genreName }">
+                    {{ genre.genreName }}
+                </option>
+            </select>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="row">
+            <button class="button" v-on:click="saveBook()" type="button">Сохранить</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#books',
+        data() {
+            return {
+                books: [],
+                bookName: '',
+                authors: [],
+                genres: []
+            }
+        },
+        created() {
+            this.getBooks();
+            this.getAuthors();
+            this.getGenres();
+        },
+        methods: {
+            getBooks: function () {
+                axios
+                    .get("/lib/books/v1")
+                    .then(response => (this.books = response.data))
+            },
+            getAuthors: function () {
+                axios
+                    .get("/lib/authors/v1")
+                    .then(response => (this.authors = response.data))
+            },
+            getGenres: function () {
+                axios
+                    .get("/lib/genres/v1")
+                    .then(response => (this.genres = response.data))
+            },
+            refreshTable: function () {
+                this.clearForm();
+                this.getBooks();
+            },
+            clearForm: function () {
+                this.selectedAuthor = null;
+                this.bookName = '';
+                this.selectedGenre = null;
+            },
+            saveBook: function () {
+                axios
+                    .post("/lib/book/v1", {
+                        "bookName": this.bookName,
+                        "author": {
+                            "authorId": this.selectedAuthor.authorId,
+                            "authorName": this.selectedAuthor.authorName
+                        },
+                        "genre": {
+                            "genreId": this.selectedGenre.genreId,
+                            "genreName": this.selectedGenre.genreName
+                        }
+                    })
+                    .then(() => {
+                        this.refreshTable();
+                    })
+            },
+            deleteBook: async function (book) {
+                await axios
+                    .delete("/lib/book/v1/" + book.bookId);
+                this.getBooks();
+            }
+        },
+    });
+</script>
+
+</body>
+</html>
