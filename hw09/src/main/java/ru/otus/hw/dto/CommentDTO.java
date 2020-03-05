@@ -17,14 +17,6 @@ public class CommentDTO {
     private BookDTO book;
     private String comment;
 
-    public Comment buildJpaEntity() {
-        return Comment.builder()
-                .commentId(commentId)
-                .bookId(book.getBookId())
-                .comment(comment)
-                .build();
-    }
-
     @Override
     public String toString() {
         return "CommentDTO {" +

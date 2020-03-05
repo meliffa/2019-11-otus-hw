@@ -34,11 +34,4 @@ public class Comment {
     @BatchSize(size = 10)
     private Book book;
 
-    public CommentDTO buildDTO() {
-        return CommentDTO.builder()
-                .commentId(commentId)
-                .comment(comment)
-                .book(book.buildDTO())
-                .build();
-    }
 }

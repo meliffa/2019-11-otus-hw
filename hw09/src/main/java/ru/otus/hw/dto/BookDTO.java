@@ -19,15 +19,6 @@ public class BookDTO {
     private AuthorDTO author;
     private GenreDTO genre;
 
-    public Book buildJpaEntity() {
-        return Book.builder()
-                .bookId(bookId)
-                .bookName(bookName)
-                .authorId(author.getAuthorId())
-                .genreId(genre.getGenreId())
-                .build();
-    }
-
     @Override
     public String toString() {
         return "BookDTO {" +

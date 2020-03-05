@@ -40,12 +40,5 @@ public class Book {
     @JoinColumn(name="GENREID", insertable = false, updatable = false)
     private Genre genre;
 
-    public BookDTO buildDTO() {
-        return BookDTO.builder()
-                .bookId(bookId)
-                .bookName(bookName)
-                .author(author.buildDTO())
-                .genre(genre.buildDTO())
-                .build();
-    }
+
 }

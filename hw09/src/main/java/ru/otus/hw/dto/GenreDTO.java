@@ -17,13 +17,6 @@ public class GenreDTO {
     private Integer genreId;
     private String genreName;
 
-    public Genre buildJpaEntity() {
-        return Genre.builder()
-                .genreId(genreId)
-                .genreName(genreName)
-                .build();
-    }
-
     @Override
     public String toString() {
         return "GenreDTO {" +

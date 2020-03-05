@@ -19,13 +19,6 @@ public class AuthorDTO {
     private String authorName;
     private Set<BookDTO> books;
 
-    public Author buildJpaEntity() {
-        return Author.builder()
-                .authorId(authorId)
-                .authorName(authorName)
-                .build();
-    }
-
     @Override
     public String toString() {
         return "AuthorDTO {" +
