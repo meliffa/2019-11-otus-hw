@@ -30,10 +30,5 @@ public class Author {
     @JoinColumn(name="AUTHORID", insertable = false, updatable = false)
     private Set<Book> books;
 
-    public AuthorDTO buildDTO() {
-        return AuthorDTO.builder()
-                .authorId(authorId)
-                .authorName(authorName)
-                .build();
-    }
+
 }

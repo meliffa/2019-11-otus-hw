@@ -26,11 +26,4 @@ public class Genre {
 
     @Column(name = "GENRENAME")
     private String genreName;
-
-    public GenreDTO buildDTO() {
-        return GenreDTO.builder()
-                .genreId(genreId)
-                .genreName(genreName)
-                .build();
-    }
 }

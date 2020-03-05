@@ -32,20 +32,13 @@ public class Book {
     @Column(name = "GENREID")
     private Integer genreId;
 
-    @OneToOne(targetEntity = Author.class, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne(targetEntity = Author.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="AUTHORID", insertable = false, updatable = false)
     private Author author;
 
-    @OneToOne(targetEntity = Genre.class, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne(targetEntity = Genre.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="GENREID", insertable = false, updatable = false)
     private Genre genre;
 
-    public BookDTO buildDTO() {
-        return BookDTO.builder()
-                .bookId(bookId)
-                .bookName(bookName)
-                .author(author.buildDTO())
-                .genre(genre.buildDTO())
-                .build();
-    }
+
 }
