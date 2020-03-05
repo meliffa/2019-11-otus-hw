@@ -32,11 +32,11 @@ public class Book {
     @Column(name = "GENREID")
     private Integer genreId;
 
-    @OneToOne(targetEntity = Author.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Author.class, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name="AUTHORID", insertable = false, updatable = false)
     private Author author;
 
-    @OneToOne(targetEntity = Genre.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Genre.class, fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name="GENREID", insertable = false, updatable = false)
     private Genre genre;
 
