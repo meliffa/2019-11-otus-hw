@@ -120,7 +120,7 @@
                 <dependencies>
                     <dependency>
                         <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <artifactId>junit-platform-surefire-authorProvider</artifactId>
                         <version>1.0.0</version>
                     </dependency>
                 </dependencies>
