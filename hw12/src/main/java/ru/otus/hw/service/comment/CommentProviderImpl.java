@@ -3,6 +3,7 @@ package ru.otus.hw.service.comment;
 import org.springframework.stereotype.Service;
 import ru.otus.hw.dto.CommentDTO;
 import ru.otus.hw.jpa.entity.Comment;
+import ru.otus.hw.jpa.repository.book.BookRepository;
 import ru.otus.hw.jpa.repository.comment.CommentRepository;
 import ru.otus.hw.utils.DtoJpaConverter;
 
@@ -16,10 +17,13 @@ import java.util.stream.Collectors;
 public class CommentProviderImpl implements CommentProvider {
     private final CommentRepository commentRepository;
     private final DtoJpaConverter converter;
+    private final BookRepository bookRepository;
 
-    public CommentProviderImpl(CommentRepository commentRepository, DtoJpaConverter converter) {
+    public CommentProviderImpl(CommentRepository commentRepository, DtoJpaConverter converter,
+                               BookRepository bookRepository) {
         this.commentRepository = commentRepository;
         this.converter = converter;
+        this.bookRepository = bookRepository;
     }
 
     @Override
@@ -35,7 +39,8 @@ public class CommentProviderImpl implements CommentProvider {
 
     @Override
     public List<CommentDTO> getByBookId(Integer bookId) {
-        return commentRepository.findByBookId(bookId).stream()
+        return commentRepository.findByBook(bookRepository.findById(bookId).orElse(null))
+                .stream()
                 .map(c -> converter.convertToCommentDto(c))
                 .collect(Collectors.toList());
     }

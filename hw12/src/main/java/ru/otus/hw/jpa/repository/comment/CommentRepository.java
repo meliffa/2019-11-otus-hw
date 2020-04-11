@@ -2,6 +2,7 @@ package ru.otus.hw.jpa.repository.comment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import ru.otus.hw.jpa.entity.Book;
 import ru.otus.hw.jpa.entity.Comment;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.List;
  */
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
-    List<Comment> findByBookId(Integer bookId);
+    List<Comment> findByBook(Book book);
 }
