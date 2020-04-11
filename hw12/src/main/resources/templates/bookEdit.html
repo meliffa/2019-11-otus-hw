@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Книга</title>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+</head>
+
+<body>
+
+<div class="libForm">
+    <h1 class="h1" th:if="${book.bookId}">Редактирование книги</h1>
+    <h1 class="h1" th:unless="${book.bookId}">Добавление книги</h1>
+
+    <form action="#" method="post" th:action="@{/book/save}" th:object="${book}">
+
+        <input th:field="*{bookId}" type="hidden">
+
+        <div>
+            <label for="authors" style="width:400px;font-size:25pt">Автор</label>
+            <select class="textfield" id="authors" th:field="*{author.authorId}" name="authorId" style="font-size:25pt;width:400px">
+                <option th:each="author : ${authors}" th:value="${author.authorId}" th:text="${author.authorName}"/>
+            </select>
+        </div>
+        <div class="spacer" style="height:10px;"></div>
+        <div>
+            <label for="bookName" style="width:600px;font-size:25pt">Название</label>
+            <input class="textfield" id="bookName" th:field="*{bookName}" type="text" style="font-size:25pt;width:600px">
+        </div>
+        <div class="spacer" style="height:10px;"></div>
+        <div>
+            <label for="genres" style="width:400px;font-size:25pt">Жанр</label>
+            <select class="textfield" id="genres" th:field="*{genre.genreId}" name="genreId" style="font-size:25pt;width:400px">
+                <option th:each="genre : ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}"/>
+            </select>
+        </div>
+        <div class="spacer" style="height:10px;"></div>
+        <button type="submit" style="font-size:25pt;width:250px">Сохранить</button>
+    </form>
+</div>
+<div th:include="footer"></div>
+</body>
+</html>
