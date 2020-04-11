@@ -28,6 +28,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable().and()
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/author/add", "/author/save").hasAuthority("ADMIN")
+                .antMatchers("/authors").hasAnyAuthority("ADMIN", "USER")
+
+                .antMatchers("/book/edit/*", "/book/save", "book/add", "book/delete/*").hasAuthority("ADMIN")
+                .antMatchers("/books").hasAnyAuthority("ADMIN", "USER")
+
+                .antMatchers("/genre/add", "/genre/save").hasAuthority("ADMIN")
+                .antMatchers("/genres").hasAnyAuthority("ADMIN", "USER")
+
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()

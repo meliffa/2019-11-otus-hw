@@ -29,7 +29,6 @@ public class AuthorController {
         this.authorProvider = authorProvider;
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/authors")
     public String getAuthors(Model model) {
         List<AuthorDTO> authors = authorProvider.getAll();
@@ -37,14 +36,12 @@ public class AuthorController {
         return AUTHORS_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/author/add")
     public String addAuthor(Model model) {
         model.addAttribute("author", new AuthorDTO());
         return AUTHOR_EDIT_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/author/save")
     public String saveAuthor(@ModelAttribute AuthorDTO author) {
         if (author.getAuthorId() != null) {

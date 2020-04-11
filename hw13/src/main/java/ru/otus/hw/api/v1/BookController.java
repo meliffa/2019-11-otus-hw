@@ -32,7 +32,6 @@ public class BookController {
         this.genreProvider = genreProvider;
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/books")
     public String getBooks(Model model) {
         List<BookDTO> books = bookProvider.getAll();
@@ -40,7 +39,6 @@ public class BookController {
         return BOOKS_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/book/edit/{bookId}")
     public String editBook(Model model, @PathVariable Integer bookId) {
         BookDTO book = bookProvider.getById(bookId);
@@ -50,7 +48,6 @@ public class BookController {
         return BOOK_EDIT_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/book/save")
     public String saveBook(@ModelAttribute BookDTO book) {
         if (book.getBookId() != null) {
@@ -61,7 +58,6 @@ public class BookController {
         return "redirect:/" + BOOKS_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/book/add")
     public String addBook(Model model) {
         model.addAttribute("book", new BookDTO());
@@ -70,7 +66,6 @@ public class BookController {
         return BOOK_EDIT_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/book/delete/{bookId}")
     public String deleteBook(@PathVariable Integer bookId) {
         bookProvider.deleteById(bookId);

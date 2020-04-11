@@ -29,7 +29,6 @@ public class GenreController {
         this.genreProvider = genreProvider;
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
     @GetMapping("/genres")
     public String getGenres(Model model) {
         List<GenreDTO> genres = genreProvider.getAll();
@@ -37,14 +36,12 @@ public class GenreController {
         return GENRES_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/genre/add")
     public String addGenre(Model model) {
         model.addAttribute("genre", new GenreDTO());
         return GENRES_EDIT_HTML;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/genre/save")
     public String saveGenre(@ModelAttribute GenreDTO genre) {
         if (genre.getGenreId() != null) {
