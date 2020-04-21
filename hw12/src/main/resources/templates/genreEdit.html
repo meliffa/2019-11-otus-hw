@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Книга</title>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+</head>
+
+<body>
+
+<div class="libForm">
+    <h1 class="h1" th:if="${genre.genreId}">Редактирование жанра</h1>
+    <h1 class="h1" th:unless="${genre.genreId}">Добавление жанра</h1>
+
+    <form action="#" method="post" th:action="@{/genre/save}" th:object="${genre}">
+
+        <input th:field="*{genreId}" type="hidden">
+        <div>
+            <label for="genreName" style="width:600px;font-size:25pt">Название жанра</label>
+            <input id="genreName" class="textfield" th:field="*{genreName}" type="text" style="font-size:25pt;width:600px">
+        </div>
+        <div class="spacer" style="height:10px;"></div>
+        <button type="submit" style="font-size:25pt;width:250px">Сохранить</button>
+    </form>
+</div>
+<div th:include="footer"></div>
+</body>
+</html>

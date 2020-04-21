@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Библиотека</title>
+    <style type="text/css">
+        body {
+            background-image: url('../lib/images/lib.jpg');
+            background-size: cover;
+        }
+        a {
+          color: white;
+        }
+        .page {
+            font-size: 30pt;
+            color: white
+            transform: translate(50%,50%);
+            position: absolute;
+            left: 50%;
+        }
+    </style>
+</head>
+
+
+<body>
+<div>
+    <div class="page">
+        <div><a href="/lib/authors">Авторы</a></div>
+        <div><a href="/lib/books">Книги</a></div>
+        <div><a href="/lib/genres">Жанры</a></div>
+    </div>
+</div>
+</body>
+</html>
