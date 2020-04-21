@@ -1,0 +1,30 @@
+logging:
+  level:
+    root: ERROR
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost
+      port: 27017
+      database: libs
+  shell:
+    interactive:
+      enabled: true
+  batch:
+    job:
+      enabled: false
+    initialize-schema: always
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://dfddcdb:5432/ispodtest
+    username: ispodtest
+    password: 12345678
+    hikari:
+      connection-test-query: select 1
+    initialization-mode: always
+    schema: classpath:db/structure.sql
+
+hw14:
+  chunkSize: 10
