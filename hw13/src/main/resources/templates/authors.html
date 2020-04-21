@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Авторы</title>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+</head>
+
+<body>
+<div>
+    <div>
+        <h1>Авторы:</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Идентификатор</th>
+                <th>ФИО</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="author : ${authors}">
+                <td th:text="${author.authorId}">1</td>
+                <td th:text="${author.authorName}">Рэй Брэдбери</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="spacer"></div>
+        <div class="link">
+            <a href="/lib/author/add">Добавить</a>
+        </div>
+    </div>
+</div>
+<div th:include="footer"></div>
+</body>
+</html>
