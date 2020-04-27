@@ -1,0 +1,22 @@
+spring:
+  batch:
+    job:
+      enabled: false
+
+  datasource:
+    url: jdbc:h2:mem:isdbtest;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    initialization-mode: always
+    schema: classpath:dbtest/structuretest.sql
+  shell:
+    interactive:
+      enabled: false
+  data:
+    mongodb:
+      port: 0
+      database: libtest
+logging:
+  level:
+    root: ERROR
+
+hw14:
+  chunkSize: 10
