@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.stereotype.Service;
 import ru.otus.hw.dto.DigitalPass;
+import ru.otus.hw.service.DigitalPassType;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -14,22 +15,23 @@ import java.util.*;
  */
 @Service
 public class DigitalPassServiceImpl implements DigitalPassService {
-
-    public static final String GET = "get";
-    public static final String DIGITAL_PASS = "DigitalPass";
     private static Random random = new Random();
 
     @Override
     public DigitalPass getDigitalPass(DigitalPass digitalPass) {
         if (digitalPass.getForIssue() && digitalPass.getType() != null) {
-            String type = StringUtils.capitalize(digitalPass.getType().name().toLowerCase());
-            try {
-                Method method = this.getClass().getDeclaredMethod(GET + type + DIGITAL_PASS, DigitalPass.class);
-                return (DigitalPass) method.invoke(this, digitalPass);
-            } catch (NoSuchMethodException | IllegalAccessException |
-                    IllegalArgumentException | InvocationTargetException e) {
-                System.out.println(e.getMessage());
-                digitalPass.setForIssue(false);
+            DigitalPassType type = digitalPass.getType();
+
+            switch (type) {
+                case MEDICAL:
+                    return getMedicalDigitalPass(digitalPass);
+                case WORKER:
+                    return getWorkerDigitalPass(digitalPass);
+                case PRIVATE:
+                    return getPrivateDigitalPass(digitalPass);
+                default:
+                    digitalPass.setForIssue(false);
+                    return digitalPass;
             }
         }
         return digitalPass;
