@@ -13,13 +13,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public DigitalPass registerDigitalPass(DigitalPass digitalPass) {
-        System.out.println("===============================================================");
-        if (digitalPass.getForIssue()) {
-            digitalPass.setUuid(UUID.randomUUID().toString());
-            System.out.println("issue citizen digital pass: " + digitalPass);
-        } else {
-            System.out.println("refuse citizen digital pass: " + digitalPass);
-        }
+        digitalPass.setUuid(UUID.randomUUID().toString());
         return digitalPass;
     }
 }

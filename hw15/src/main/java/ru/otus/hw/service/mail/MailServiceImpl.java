@@ -19,9 +19,7 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public DigitalPass sendMail(DigitalPass digitalPass) {
-        if (digitalPass.getForIssue()) {
-            Mail mail = new Mail(mailFrom, digitalPass.getMail(), mailSubject, digitalPass.toString());
-        }
+        Mail mail = new Mail(mailFrom, digitalPass.getMail(), mailSubject, digitalPass.toString());
         return digitalPass;
     }
 }
