@@ -1,13 +1,9 @@
 package ru.otus.hw.service.digitalpass;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.stereotype.Service;
 import ru.otus.hw.dto.DigitalPass;
 import ru.otus.hw.service.DigitalPassType;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
 
 /**

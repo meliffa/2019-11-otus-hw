@@ -4,17 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.config.EnableIntegration;
-import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.*;
-import org.springframework.integration.support.MessageBuilder;
 import ru.otus.hw.dto.DigitalPass;
-import ru.otus.hw.service.DigitalPassType;
 import ru.otus.hw.service.digitalpass.DigitalPassService;
 import ru.otus.hw.service.digitalpass.DigitalPassUtils;
 import ru.otus.hw.service.mail.MailService;
 import ru.otus.hw.service.passport.CheckPassportService;
 import ru.otus.hw.service.register.RegisterService;
-import java.util.Random;
 
 /**
  * Created by Inna Spodarik on 22.04.2020.
