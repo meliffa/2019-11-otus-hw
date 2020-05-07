@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://dfddcdb:5432/ispodtest
+    username: ispodtest
+    password: 12345678
+    hikari:
+      connection-test-query: select 1
+    initialization-mode: always
+    schema: classpath:db/structure.sql
+    data: classpath:db/data.sql
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+# formatting json out in browser
+  jackson:
+    serialization:
+      indent_output: true
+      write-dates-as-timestamps: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, health, logfile, info
+  endpoint:
+    health:
+      show-details: always
+  health:
+    diskspace:
+      enabled: false
+    ping:
+      enabled: false
+
+logging:
+  file:
+    name: app.log
