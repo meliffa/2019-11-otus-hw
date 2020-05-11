@@ -1,0 +1,38 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:isdbcomments;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    initialization-mode: always
+    schema: classpath:db/structure.sql
+    data: classpath:db/data.sql
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+# formatting json out in browser
+  jackson:
+    serialization:
+      indent_output: true
+      write-dates-as-timestamps: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info
+
+logging:
+  file:
+    name: app.log
+
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: false
