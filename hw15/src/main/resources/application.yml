@@ -1,0 +1,6 @@
+logging:
+  level:
+    root: ERROR
+hw15:
+  mailFrom: digitalpass@test.ru
+  mailSubject: Digital Pass
