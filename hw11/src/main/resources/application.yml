@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+      context-path: /lib
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: libs
+
+  # formatting json out in browser
+  jackson:
+    serialization:
+      indent_output: true
+      write-dates-as-timestamps: false
+logging:
+  level:
+    root: ERROR

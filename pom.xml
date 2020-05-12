@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring.version>2.2.2.RELEASE</spring.version>
-        <java.version>1.8</java.version>
+        <spring.version>2.2.6.RELEASE</spring.version>
+        <java.version>11</java.version>
     </properties>
 
     <profiles>
@@ -28,6 +28,7 @@
                 <module>hw08</module>
                 <module>hw09</module>
                 <module>hw10</module>
+                <module>hw11</module>
                 <module>hw12</module>
                 <module>hw13</module>
                 <module>hw14</module>
