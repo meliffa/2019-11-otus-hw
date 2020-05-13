@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:isdbtest;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    initialization-mode: always
+    schema: classpath:dbtest/structuretest.sql
+    data: classpath:dbtest/datatest.sql
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
